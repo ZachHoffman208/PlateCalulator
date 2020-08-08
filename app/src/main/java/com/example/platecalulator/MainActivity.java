@@ -157,8 +157,6 @@ public class MainActivity extends AppCompatActivity {
             j++;
         }
 
-        hidePlates(plateArr);
-
         //sets the textviews based off of the counters
         plate45.setText(String.valueOf(plateArr[0]));
         plate35.setText(String.valueOf(plateArr[1]));
@@ -168,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
         plate2Half.setText(String.valueOf(plateArr[5]));
 
         //clears the images of the plates that are zero
+        hidePlates(plateArr);
 
     }
 

@@ -15,7 +15,7 @@ public class barSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar_selector);
 
-        setTitle("Chose Bar");
+        setTitle("Choose Bar");
 
         //gets buttons in her
         Button olympicBtn = (Button)findViewById(R.id.olympicBtn);
