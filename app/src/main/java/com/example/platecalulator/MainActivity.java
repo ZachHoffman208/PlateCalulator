@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button calculateBtn = (Button)findViewById(R.id.calculateBtn);
         Button changeBarBtn = (Button)findViewById(R.id.changeBarBtn);
-
+        Button clearBarBtn = (Button)findViewById(R.id. clearBarBtn);
 
         //calculate button
         calculateBtn.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        clearBarBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                clearBar();
+            }
+            });
     }
 
     //Overrides  the activityResult so it can pass the data
@@ -108,49 +116,6 @@ public class MainActivity extends AppCompatActivity {
     //figures out the plates
     private void setPlates(double weight)
     {
-        //initalizes plate counters
-        int plate45Int=0;
-        int plate35Int=0;
-        int plate25Int=0;
-        int plate10Int=0;
-        int plate5Int=0;
-        int plate2HalfInt=0;
-
-        while(weight>=45)
-        {
-            weight = weight - 45;
-            plate45Int++;
-        }
-
-        while(weight>=35)
-        {
-            weight = weight - 35;
-            plate35Int++;
-        }
-
-        while(weight>=25)
-        {
-            weight = weight - 25;
-            plate25Int++;
-        }
-
-        while(weight>=10)
-        {
-            weight = weight - 10;
-            plate10Int++;
-        }
-
-        while(weight>=5)
-        {
-            weight = weight - 5;
-            plate5Int++;
-        }
-
-        while(weight>=2.5)
-        {
-            weight = weight -2.5;
-            plate2HalfInt++;
-        }
 
         //gets textviews for the method
         TextView plate45 = (TextView)findViewById(R.id.weightFourtyFive);
@@ -160,13 +125,57 @@ public class MainActivity extends AppCompatActivity {
         TextView plate5 = (TextView)findViewById(R.id.weightFive);
         TextView plate2Half = (TextView)findViewById(R.id.weightTwoHalf);
 
-        //sets the textvies based off of the counters
-        plate45.setText(String.valueOf(plate45Int));
-        plate35.setText(String.valueOf(plate35Int));
-        plate25.setText(String.valueOf(plate25Int));
-        plate10.setText(String.valueOf(plate10Int));
-        plate5.setText(String.valueOf(plate5Int));
-        plate2Half.setText(String.valueOf(plate2HalfInt));
+        // these two arrays need to be the exact same lenght or it won't work right.  In the future
+        // I will set it up so that this will be done automatically
+        int plateArr[] = {0, 0, 0, 0, 0, 0};
+
+        // To better clarify is the array that sets what weights are availabe.  this needs to be
+        // sorted from largest to smallest for it to work correctly, I'm not going  to make this
+        // automatic in the future, it's not hard to do.
+        final double plateWeight[] = {45, 35, 25, 10, 5, 2.5};
+
+
+        //used to itterate the plateWeight array
+        int j = 0;
+
+        //this loop figures out how many plates are need on each side
+        for(int i = 0; i < plateArr.length; i++)
+        {
+
+            //subtracts the highest possible weight from the total weight
+            while(weight>=plateWeight[j])
+            {
+                weight = weight - plateWeight[j];
+                plateArr[i]++;
+            }
+
+            j++;
+        }
+
+        //sets the textviews based off of the counters
+        plate45.setText(String.valueOf(plateArr[0]));
+        plate35.setText(String.valueOf(plateArr[1]));
+        plate25.setText(String.valueOf(plateArr[2]));
+        plate10.setText(String.valueOf(plateArr[3]));
+        plate5.setText(String.valueOf(plateArr[4]));
+        plate2Half.setText(String.valueOf(plateArr[5]));
+
+    }
+
+    //clears the input
+    private void clearBar()
+    {
+        EditText weightInput = (EditText)findViewById(R.id.weightInput);
+
+        // So this mess I found on line gets the text from teh edit text and sees if it's empty
+        if (TextUtils.isEmpty(weightInput.getText().toString()))
+        {
+            Toast.makeText(MainActivity.this, "Already empty", Toast.LENGTH_LONG).show();
+        }
+        else{
+            weightInput.getText().clear();
+        }
+
     }
 
     //hides the keyboard
