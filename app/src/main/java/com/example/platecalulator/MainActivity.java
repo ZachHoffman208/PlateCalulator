@@ -209,9 +209,9 @@ public class MainActivity extends AppCompatActivity {
         //ifelse statement 45
         if(plateArr[0] == 0)
         {
-            plate45.setVisibility(View.INVISIBLE);
-            plate45XImg.setVisibility(View.INVISIBLE);
-            plate45Img.setVisibility(View.INVISIBLE);
+            plate45.setVisibility(View.GONE);
+            plate45XImg.setVisibility(View.GONE);
+            plate45Img.setVisibility(View.GONE);
         }
         else
         {
@@ -223,9 +223,9 @@ public class MainActivity extends AppCompatActivity {
         //ifelse statement 35
         if(plateArr[1] == 0)
         {
-            plate35.setVisibility(View.INVISIBLE);
-            plate35XImg.setVisibility(View.INVISIBLE);
-            plate35Img.setVisibility(View.INVISIBLE);
+            plate35.setVisibility(View.GONE);
+            plate35XImg.setVisibility(View.GONE);
+            plate35Img.setVisibility(View.GONE);
         }
         else
         {
@@ -237,9 +237,9 @@ public class MainActivity extends AppCompatActivity {
         //ifelse statement 25
         if(plateArr[2] == 0)
         {
-            plate25.setVisibility(View.INVISIBLE);
-            plate25XImg.setVisibility(View.INVISIBLE);
-            plate25Img.setVisibility(View.INVISIBLE);
+            plate25.setVisibility(View.GONE);
+            plate25XImg.setVisibility(View.GONE);
+            plate25Img.setVisibility(View.GONE);
         }
         else
         {
@@ -251,9 +251,9 @@ public class MainActivity extends AppCompatActivity {
         //ifelse statement 10
         if(plateArr[3] == 0)
         {
-            plate10.setVisibility(View.INVISIBLE);
-            plate10XImg.setVisibility(View.INVISIBLE);
-            plate10Img.setVisibility(View.INVISIBLE);
+            plate10.setVisibility(View.GONE);
+            plate10XImg.setVisibility(View.GONE);
+            plate10Img.setVisibility(View.GONE);
         }
         else
         {
@@ -265,9 +265,9 @@ public class MainActivity extends AppCompatActivity {
         //ifelse statement 5
         if(plateArr[4] == 0)
         {
-            plate5.setVisibility(View.INVISIBLE);
-            plate5XImg.setVisibility(View.INVISIBLE);
-            plate5Img.setVisibility(View.INVISIBLE);
+            plate5.setVisibility(View.GONE);
+            plate5XImg.setVisibility(View.GONE);
+            plate5Img.setVisibility(View.GONE);
         }
         else
         {
@@ -279,9 +279,9 @@ public class MainActivity extends AppCompatActivity {
         //ifelse statement 2.5
         if(plateArr[5] == 0)
         {
-            plate2Half.setVisibility(View.INVISIBLE);
-            plate2HalfXImg.setVisibility(View.INVISIBLE);
-            plate2HalfImg.setVisibility(View.INVISIBLE);
+            plate2Half.setVisibility(View.GONE);
+            plate2HalfXImg.setVisibility(View.GONE);
+            plate2HalfImg.setVisibility(View.GONE);
         }
         else
         {
