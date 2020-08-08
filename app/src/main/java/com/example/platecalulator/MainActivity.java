@@ -12,10 +12,14 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    //make sure to make this match the arrays in setPlates
+    public static final int NUMBEROFPLATES = 6;
 
     public boolean bar = true;
     public double barWeight =45;
@@ -94,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //splits the weight
+    //splits the weight then calls the function to figure out the plates
     private void splitWeight(double weight, double barWeight, boolean bar)
     {
         double passWeight=weight;
@@ -127,13 +131,14 @@ public class MainActivity extends AppCompatActivity {
 
         // these two arrays need to be the exact same lenght or it won't work right.  In the future
         // I will set it up so that this will be done automatically
+
+        //this is the number of each plates that are set
         int plateArr[] = {0, 0, 0, 0, 0, 0};
 
         // To better clarify is the array that sets what weights are availabe.  this needs to be
         // sorted from largest to smallest for it to work correctly, I'm not going  to make this
         // automatic in the future, it's not hard to do.
         final double plateWeight[] = {45, 35, 25, 10, 5, 2.5};
-
 
         //used to itterate the plateWeight array
         int j = 0;
@@ -152,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
             j++;
         }
 
+        hidePlates(plateArr);
+
         //sets the textviews based off of the counters
         plate45.setText(String.valueOf(plateArr[0]));
         plate35.setText(String.valueOf(plateArr[1]));
@@ -159,6 +166,129 @@ public class MainActivity extends AppCompatActivity {
         plate10.setText(String.valueOf(plateArr[3]));
         plate5.setText(String.valueOf(plateArr[4]));
         plate2Half.setText(String.valueOf(plateArr[5]));
+
+        //clears the images of the plates that are zero
+
+    }
+
+    private void hidePlates(int [] plateArr)
+    {
+        //45 stuff
+        TextView plate45 = (TextView)findViewById(R.id.weightFourtyFive);
+        ImageView plate45XImg = (ImageView)findViewById(R.id.x45Img);
+        ImageView plate45Img = (ImageView)findViewById(R.id.fourtyfivePlateImg);
+
+        //35 stuff
+        TextView plate35 = (TextView)findViewById(R.id.weightThirtyfive);
+        ImageView plate35XImg = (ImageView)findViewById(R.id.x35Img);
+        ImageView plate35Img = (ImageView)findViewById(R.id.thirtyfivePlateImg);
+
+        //25 stuff
+        TextView plate25 = (TextView)findViewById(R.id.weightTwentyFive);
+        ImageView plate25XImg = (ImageView)findViewById(R.id.x25Img);
+        ImageView plate25Img = (ImageView)findViewById(R.id.twentyfivePlateImg);
+
+        //10 stuff
+        TextView plate10 = (TextView)findViewById(R.id.weightTen);
+        ImageView plate10XImg = (ImageView)findViewById(R.id.x10Img);
+        ImageView plate10Img = (ImageView)findViewById(R.id.tenPlateImg);
+
+        //5 stuff
+        TextView plate5 = (TextView)findViewById(R.id.weightFive);
+        ImageView plate5XImg = (ImageView)findViewById(R.id.x5Img);
+        ImageView plate5Img = (ImageView)findViewById(R.id.fivePlateImg);
+
+        //2.5 stuff
+        TextView plate2Half = (TextView)findViewById(R.id.weightTwoHalf);
+        ImageView plate2HalfXImg = (ImageView)findViewById(R.id.x2HalfImg);
+        ImageView plate2HalfImg = (ImageView)findViewById(R.id.twoHalfPlateImg);
+
+        // this is going to have to be clunky for this to work since I'm working with assests that
+        // are in the main display
+
+        //ifelse statement 45
+        if(plateArr[0] == 0)
+        {
+            plate45.setVisibility(View.INVISIBLE);
+            plate45XImg.setVisibility(View.INVISIBLE);
+            plate45Img.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            plate45.setVisibility(View.VISIBLE);
+            plate45XImg.setVisibility(View.VISIBLE);
+            plate45Img.setVisibility(View.VISIBLE);
+        }
+
+        //ifelse statement 35
+        if(plateArr[1] == 0)
+        {
+            plate35.setVisibility(View.INVISIBLE);
+            plate35XImg.setVisibility(View.INVISIBLE);
+            plate35Img.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            plate35.setVisibility(View.VISIBLE);
+            plate35XImg.setVisibility(View.VISIBLE);
+            plate35Img.setVisibility(View.VISIBLE);
+        }
+
+        //ifelse statement 25
+        if(plateArr[2] == 0)
+        {
+            plate25.setVisibility(View.INVISIBLE);
+            plate25XImg.setVisibility(View.INVISIBLE);
+            plate25Img.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            plate25.setVisibility(View.VISIBLE);
+            plate25XImg.setVisibility(View.VISIBLE);
+            plate25Img.setVisibility(View.VISIBLE);
+        }
+
+        //ifelse statement 10
+        if(plateArr[3] == 0)
+        {
+            plate10.setVisibility(View.INVISIBLE);
+            plate10XImg.setVisibility(View.INVISIBLE);
+            plate10Img.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            plate10.setVisibility(View.VISIBLE);
+            plate10XImg.setVisibility(View.VISIBLE);
+            plate10Img.setVisibility(View.VISIBLE);
+        }
+
+        //ifelse statement 5
+        if(plateArr[4] == 0)
+        {
+            plate5.setVisibility(View.INVISIBLE);
+            plate5XImg.setVisibility(View.INVISIBLE);
+            plate5Img.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            plate5.setVisibility(View.VISIBLE);
+            plate5XImg.setVisibility(View.VISIBLE);
+            plate5Img.setVisibility(View.VISIBLE);
+        }
+
+        //ifelse statement 2.5
+        if(plateArr[5] == 0)
+        {
+            plate2Half.setVisibility(View.INVISIBLE);
+            plate2HalfXImg.setVisibility(View.INVISIBLE);
+            plate2HalfImg.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            plate2Half.setVisibility(View.VISIBLE);
+            plate2HalfXImg.setVisibility(View.VISIBLE);
+            plate2HalfImg.setVisibility(View.VISIBLE);
+        }
 
     }
 
