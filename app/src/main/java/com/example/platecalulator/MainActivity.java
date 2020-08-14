@@ -120,25 +120,25 @@ public class MainActivity extends AppCompatActivity {
     //figures out the plates
     private void setPlates(double weight)
     {
-
-        //gets textviews for the method
-        TextView plate45 = (TextView)findViewById(R.id.weightFourtyFive);
-        TextView plate35 = (TextView)findViewById(R.id.weightThirtyfive);
-        TextView plate25 = (TextView)findViewById(R.id.weightTwentyFive);
-        TextView plate10 = (TextView)findViewById(R.id.weightTen);
-        TextView plate5 = (TextView)findViewById(R.id.weightFive);
-        TextView plate2Half = (TextView)findViewById(R.id.weightTwoHalf);
-
         // these two arrays need to be the exact same lenght or it won't work right.  In the future
         // I will set it up so that this will be done automatically
 
-        //this is the number of each plates that are set
-        int plateArr[] = {0, 0, 0, 0, 0, 0};
+        // maynbe just get rid of all of this for a list/tuple/dictory
 
-        // To better clarify is the array that sets what weights are availabe.  this needs to be
-        // sorted from largest to smallest for it to work correctly, I'm not going  to make this
-        // automatic in the future, it's not hard to do.
+        //old code here just in case the new way doesn't work as well as it should
+        //this is the number of each plates that are set
+        //int plateArr[] = {0, 0, 0, 0, 0, 0};
+
+        // this is a test to see if this would break anything, I might put this in into a double array
+        // with the plate array
+        int plateArr[] = new int [NUMBEROFPLATES];
+
+        // avaliable weights sorted from largest to smallest, these are hard coded, because without
+        // exception these are the only weights I have seen in a gym
         final double plateWeight[] = {45, 35, 25, 10, 5, 2.5};
+
+
+
 
         //used to itterate the plateWeight array
         int j = 0;
@@ -157,6 +157,17 @@ public class MainActivity extends AppCompatActivity {
             j++;
         }
 
+
+        // maybe these should be moved to the hidePlates fucntion,
+
+        //gets textviews for the method
+        TextView plate45 = (TextView)findViewById(R.id.weightFourtyFive);
+        TextView plate35 = (TextView)findViewById(R.id.weightThirtyfive);
+        TextView plate25 = (TextView)findViewById(R.id.weightTwentyFive);
+        TextView plate10 = (TextView)findViewById(R.id.weightTen);
+        TextView plate5 = (TextView)findViewById(R.id.weightFive);
+        TextView plate2Half = (TextView)findViewById(R.id.weightTwoHalf);
+
         //sets the textviews based off of the counters
         plate45.setText(String.valueOf(plateArr[0]));
         plate35.setText(String.valueOf(plateArr[1]));
@@ -170,8 +181,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // this class hides the weights where they are zero or aren't used
     private void hidePlates(int [] plateArr)
     {
+
+        //get front end stuff
         //45 stuff
         TextView plate45 = (TextView)findViewById(R.id.weightFourtyFive);
         ImageView plate45XImg = (ImageView)findViewById(R.id.x45Img);
